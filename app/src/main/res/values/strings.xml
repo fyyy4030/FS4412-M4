@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Arduino扩展测试</string>
+    <string name="alcohol">酒精传感器</string>
+    <string name="brake">光电闸</string>
+    <string name="buzzer">蜂鸣器</string>
+    <string name="compass">电子罗盘</string>
+    <string name="dc_motor">直流电机</string>
+    <string name="gas">可燃气传感器</string>
+    <string name="light">光照传感器</string>
+    <string name="marix">矩阵键盘</string>
+    <string name="relay">继电器</string>
+    <string name="rfid">RFID模块</string>
+    <string name="servo">舵机</string>
+    <string name="steeper">步进电机</string>
+    <string name="thermistor">热敏电阻</string>
+    <string name="tube">数码管</string>
+    <string name="notice">请注意：</string>
+    <string name="notice_idea">将拨码开关调整如下图所示:</string>
+    <string name="get_input">等待输入。。。</string>
+
+
+
+</resources>

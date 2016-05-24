@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Adunio Extended Test Program</string>
+    <string name="alcohol">Alcohol Sensor</string>
+    <string name="brake">Photoelectric Brake</string>
+    <string name="buzzer">Buzzer</string>
+    <string name="compass">Compass</string>
+    <string name="dc_motor">DC_Motor</string>
+    <string name="gas">Gas Sensor</string>
+    <string name="light">Light Sensor</string>
+    <string name="marix">Matrix Keyboard</string>
+    <string name="relay">Relay</string>
+    <string name="rfid">RFID</string>
+    <string name="servo">Steering Engine</string>
+    <string name="steeper">Stepper Motor</string>
+    <string name="thermistor">Thermistor</string>
+    <string name="tube">Digital Tube</string>
+    <string name="notice">Pay Attention Please</string>
+    <string name="notice_idea">Please adjust the dial switch as shown in the figure below:</string>
+    <string name="get_input">waitting for input 。。。</string>
+</resources>
