@@ -118,7 +118,7 @@ public class ServoFragment extends Fragment implements RadioGroup.OnCheckedChang
                 break;
         }
         drawServo.setDegree(degree);
-
+        drawServo.invalidate();
     }
 
 

@@ -7,6 +7,7 @@
 int fd_relay = -1;
 int gpio_i = 1;
 
+#ifndef FS210
 void write_relay(int num){
     if(fd_relay == -1){
         fd_relay = open(BUZZER_FILE, O_RDWR);
@@ -36,3 +37,32 @@ void close_relay(){
         close(fd_relay);
     }
 }
+
+#else
+void write_relay(int num){
+    if(fd_relay == -1){
+        fd_relay = open(RELAY_PATH, O_RDWR);
+        if(fd_relay < 0){
+            LOGI("ERROR OPEN : %s", RELAY_PATH);
+            return;
+        }
+    }
+
+    switch(num){
+        case 0:
+            ioctl(fd_relay, RELAY_ON, 1);
+        break;
+        case 1:
+            ioctl(fd_relay, RELAY_OFF, 1);
+        break;
+        default:
+            close_relay();
+        break;
+    }
+}
+void close_relay(){
+    if(fd_relay != -1){
+        close(fd_relay);
+    }
+}
+#endif

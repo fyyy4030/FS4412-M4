@@ -20,9 +20,13 @@
 #include <sys/types.h>
 #include <sys/ioctl.h>
 
+//#define FS210
 //ADC
+#ifdef FS210
+#define ADC_FILE            "/dev/adc_m4"
+#else
 #define ADC_FILE            "/dev/adc"
-
+#endif
 #define ADC_ALCOHOL         1
 #define ADC_LIGHT           2
 #define ADC_SENSITIVE       3//thermistor
@@ -43,11 +47,19 @@ int read_adc(int which);
 int read_brake_state();
 
 //Buzzer
-#define BUZZER_FILE         "/dev/gpio"
 #define BUZZER              6
 int fd_gpio;
+
+#ifdef  FS210
+#define BUZZER_FILE         "/dev/beep1"
+#define BUZZER_ON           _IOW('B', 0, int)
+#define BUZZER_OFF          _IOW('B', 1, int)
+#else
+#define BUZZER_FILE         "/dev/gpio"
 #define BUZZER_ON           _IOW('L', 0, int)
-#define BUZZER_OFF           _IOW('L', 1, int)
+#define BUZZER_OFF          _IOW('L', 1, int)
+#endif
+
 void write_buzzer(int HZ);
 void stop_buzzer();
 
@@ -81,6 +93,12 @@ void read_zlg(int value[2]);
 #define RELAY               10
 void write_relay(int);
 void close_relay();
+#ifdef FS210
+#define RELAY_PATH          "/dev/relay"
+#define RELAY_ON            _IOW('R', 0, int)
+#define RELAY_OFF           _IOW('R', 1, int)
+#else
+#endif
 
 //RFID
 #define RFID_FILE           "/dev/rfid"

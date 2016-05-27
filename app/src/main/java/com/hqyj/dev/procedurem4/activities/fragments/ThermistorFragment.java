@@ -97,7 +97,7 @@ public class ThermistorFragment extends Fragment {
                 DecimalFormat df = new DecimalFormat("#.##");
 
                 int value = thermistor.operate.read()[0];
-                String result = df.format((double)value*7.2/4096);
+                String result = df.format((double)value*3.3/4096);
 
                 b.putString(TAG, result);
                 Log.d(TAG, result);

@@ -42,5 +42,6 @@ void close_steeper(){
         ioctl(fd_steeper, STEEPER_OFF, 3);
         ioctl(fd_steeper, STEEPER_OFF, 4);
         close(fd_steeper);
+        fd_steeper = -1;
     }
 }

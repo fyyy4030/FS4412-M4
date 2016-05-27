@@ -101,7 +101,7 @@ public class AlcoholFragment extends Fragment {
                 DecimalFormat df = new DecimalFormat("#.##");
 
                 int value = alcohol.operate.read()[0];
-                String result = df.format((double)value*7.2/4096);
+                String result = df.format((double)value*3.3/4096);
 
                 b.putString(ALOCHOL, result);
                 msg.what = 1;

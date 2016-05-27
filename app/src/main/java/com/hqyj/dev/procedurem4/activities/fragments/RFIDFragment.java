@@ -92,9 +92,6 @@ public class RFIDFragment extends Fragment {
                 }
 
                 int numbers = rfid.operate.read()[0];
-                if (numbers == 0){
-                    continue;
-                }
                 Bundle bundle = new Bundle();
                 bundle.putInt(TAG, numbers);
                 Message msg = new Message();
@@ -112,11 +109,11 @@ public class RFIDFragment extends Fragment {
         int[] intArray = new int[4];
         String string;
         for (int i = 0; i < 4; i++){
-            intArray[i] = (number >> (3-i)*8) & 0x0f;
+            intArray[i] = (number >> (3-i)*8) & 0x0ff;
 
         }
-        string = String.format("Card ID: %02d %02d %02d %02d",
-                intArray[1],intArray[1],intArray[2],intArray[3]);
+        string = String.format("Card ID: %02x %02x %02x %02x",
+                intArray[0],intArray[1],intArray[2],intArray[3]);
 
         return string;
     }

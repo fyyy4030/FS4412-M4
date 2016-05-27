@@ -126,11 +126,18 @@ public class CompassFragment extends Fragment {
 
     @SuppressLint("DefaultLocale")
     private String doAngle(int angle){
+
+        if (angle > 270){
+            angle = angle - 270;
+        } else {
+            angle = angle + 90;
+        }
+
         String string;
 
         if (angle < 22.5){
             string = String.format("当前方向：%s,南偏西%d", "正南", angle);
-        } else if (angle > 337.5){
+        } else if (angle > 337.5 && angle <= 360){
             string = String.format("当前方向：%s,南偏东%d", "正南", 360 - angle);
         }else if (angle > 22.5 && angle <= 45){
             string = String.format("当前方向：%s,西南偏南%d", "西南", 45 - angle);

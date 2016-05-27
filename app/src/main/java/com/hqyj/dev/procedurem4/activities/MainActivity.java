@@ -283,8 +283,6 @@ public class MainActivity extends FragmentActivity implements AdapterView.OnItem
         handler.sendMessage(msgPosition);
 
 
-        
-
         if (position < hChild - 1) {
             listView.setSelection(0);
             view = listView.getChildAt(position);

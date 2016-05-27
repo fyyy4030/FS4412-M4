@@ -96,13 +96,10 @@ public class MatrixFragment extends Fragment {
             while (threadOn) {
                 Bundle b = new Bundle();
                 Message msg = new Message();
-                Log.d(TAG, "1");
                 int[] value = matrix.operate.read();
-                Log.d(TAG, "2");
 
                 if (value != null && value[0]!=0 && value[1]!=0) {
                     String valueKey = getKey(value[0]);
-                    Log.d(TAG, valueKey);
                     if (!valueKey.equalsIgnoreCase( "null")) {
                         if (string == null) {
                             string = getKey(value[0]);
