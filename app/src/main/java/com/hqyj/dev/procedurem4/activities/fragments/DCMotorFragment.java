@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +42,7 @@ public class DCMotorFragment extends Fragment {
             switch (msg.what){
                 case 1:
                     int which = msg.getData().getInt(TAG);
-                    Log.d(TAG,""+which);
+//                    Log.d(TAG,""+which);
                     dcMotor.operate.write(which);
 
                     switch (which){
@@ -95,17 +94,12 @@ public class DCMotorFragment extends Fragment {
                 handler.sendMessage(msg);
             }
         });
-
         return mView;
-
-
     }
 
     private void initShow() {
-
         dcButton = (DrawDCButton) mView.findViewById(R.id.dc);
         textView = (TextView) mView.findViewById(R.id.txv_dc);
-
     }
 
     @Override

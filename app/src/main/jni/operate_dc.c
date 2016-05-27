@@ -32,7 +32,7 @@ void start_right_motor(){
     ioctl(fd, DC_DYNAMO_ON, 1);
     ioctl(fd, DC_DYNAMO_OFF, 2);
 
-    LOGI("################send left");
+    //LOGI("################send left");
 }
 void start_left_motor(){
     if(fd == -1){
@@ -46,7 +46,7 @@ void start_left_motor(){
     ioctl(fd, DC_DYNAMO_OFF, 1);
     ioctl(fd, DC_DYNAMO_ON, 2);
 
-    LOGI("################send right");
+    //LOGI("################send right");
 }
 
 void close_motor(){

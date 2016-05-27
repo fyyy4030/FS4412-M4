@@ -23,7 +23,7 @@ int read_angle(){
     ioctl(fd, GET_VAL, &data);
 
     angle = atan2((double)data.y, (double)data.x) * (180 / 3.14159265) + 180;
-    LOGI("angle = %lf", angle);
+    //LOGI("angle = %lf", angle);
 
     value = (int) angle;
 

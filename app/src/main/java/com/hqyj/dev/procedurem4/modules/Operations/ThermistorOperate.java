@@ -18,9 +18,7 @@ public class ThermistorOperate implements Operate {
     @Override
     public int[] read() {
 
-        int[] value = NativieOperate.readModule(ModulesInfo.THERMISTOR);
-
-        return value;
+        return NativieOperate.readModule(ModulesInfo.THERMISTOR);
     }
 
     @Override

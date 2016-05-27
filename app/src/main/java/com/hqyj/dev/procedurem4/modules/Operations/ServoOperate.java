@@ -18,9 +18,7 @@ public class ServoOperate implements Operate {
     @Override
     public int[] read() {
 
-        int[] value = NativieOperate.readModule(ModulesInfo.SERVO);
-
-        return value;
+        return NativieOperate.readModule(ModulesInfo.SERVO);
     }
 
     @Override

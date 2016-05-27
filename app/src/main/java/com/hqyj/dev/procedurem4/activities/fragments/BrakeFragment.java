@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +41,7 @@ public class BrakeFragment extends Fragment {
             switch (msg.what) {
                 case 1:
                     int state = msg.getData().getInt(TAG);
-                    textView.setTextSize(30);
+                    textView.setTextSize(25);
                     textView.setText(String.format("光电闸：%s", (state == 0x00) ? "开" : (state == 0x10) ? "关" : "未知"));
                     textViewCount.setText(String.format("光电闸开关次数：%d", count));
                     break;
@@ -114,11 +113,13 @@ public class BrakeFragment extends Fragment {
                     oldState = value;
                     if (value == 0)
                         count ++;
-                    try {
-                        sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+
+                }
+
+                try {
+                    sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }

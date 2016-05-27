@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +37,7 @@ public class ServoFragment extends Fragment implements RadioGroup.OnCheckedChang
             super.handleMessage(msg);
             switch (msg.what){
                 case 1:
-                    Log.d(TAG, msg.getData().getInt(TAG) +"角度");
+//                    Log.d(TAG, msg.getData().getInt(TAG) +"角度");
                     degree = msg.getData().getInt(TAG);
                     break;
                 default:
@@ -118,7 +117,7 @@ public class ServoFragment extends Fragment implements RadioGroup.OnCheckedChang
                 break;
         }
         drawServo.setDegree(degree);
-
+        drawServo.invalidate();
     }
 
 

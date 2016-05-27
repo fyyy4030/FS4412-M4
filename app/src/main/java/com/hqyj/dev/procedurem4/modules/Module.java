@@ -3,6 +3,7 @@ package com.hqyj.dev.procedurem4.modules;
 import com.hqyj.dev.procedurem4.modules.behaivor.Operate;
 
 /**
+ *
  * Created by jiyangkang on 2016/5/6 0006.
  */
 public abstract class Module {

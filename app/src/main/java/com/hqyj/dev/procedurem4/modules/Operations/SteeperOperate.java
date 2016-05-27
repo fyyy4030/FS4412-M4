@@ -18,9 +18,7 @@ public class SteeperOperate implements Operate {
     @Override
     public int[] read() {
 
-        int[] value = NativieOperate.readModule(ModulesInfo.STEEPER);
-
-        return value;
+        return NativieOperate.readModule(ModulesInfo.STEEPER);
     }
 
     @Override

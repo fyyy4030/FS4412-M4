@@ -6,22 +6,18 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.RotateAnimation;
 import android.widget.TextView;
 
 import com.hqyj.dev.procedurem4.R;
 import com.hqyj.dev.procedurem4.modules.modules.Compass;
 
-import java.text.DecimalFormat;
-
 import view.DrawCompass;
 
 /**
+ *
  * Created by jiyangkang on 2016/5/5 0005.
  */
 public class CompassFragment extends Fragment {
@@ -51,7 +47,7 @@ public class CompassFragment extends Fragment {
                     String value = msg.getData().getString(TAG);
                     int valueI = msg.getData().getInt(TAG_1);
                     textView.setTextSize(15);
-                    Log.d(TAG, ""+valueI);
+//                    Log.d(TAG, ""+valueI);
                     textView.setText(String.format("%s", value));
                     drawCompass.setDegree(valueI);
                     drawCompass.invalidate();
@@ -126,11 +122,18 @@ public class CompassFragment extends Fragment {
 
     @SuppressLint("DefaultLocale")
     private String doAngle(int angle){
+
+        if (angle > 270){
+            angle = angle - 270;
+        } else {
+            angle = angle + 90;
+        }
+
         String string;
 
         if (angle < 22.5){
             string = String.format("当前方向：%s,南偏西%d", "正南", angle);
-        } else if (angle > 337.5){
+        } else if (angle > 337.5 && angle <= 360){
             string = String.format("当前方向：%s,南偏东%d", "正南", 360 - angle);
         }else if (angle > 22.5 && angle <= 45){
             string = String.format("当前方向：%s,西南偏南%d", "西南", 45 - angle);

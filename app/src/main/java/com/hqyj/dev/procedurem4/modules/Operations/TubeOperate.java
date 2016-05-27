@@ -18,9 +18,7 @@ public class TubeOperate implements Operate {
     @Override
     public int[] read() {
 
-        int[] value = NativieOperate.readModule(ModulesInfo.TUBE);
-
-        return value;
+        return NativieOperate.readModule(ModulesInfo.TUBE);
     }
 
     @Override

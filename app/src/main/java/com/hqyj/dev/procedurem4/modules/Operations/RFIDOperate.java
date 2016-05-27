@@ -18,9 +18,7 @@ public class RFIDOperate implements Operate {
     @Override
     public int[] read() {
 
-        int[] value = NativieOperate.readModule(ModulesInfo.RFID);
-
-        return value;
+        return NativieOperate.readModule(ModulesInfo.RFID);
     }
 
     @Override

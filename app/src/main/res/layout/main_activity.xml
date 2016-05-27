@@ -75,12 +75,12 @@
                         android:layout_height="wrap_content"
                         android:text="@string/notice"
                         android:textColor="#FF0000"
-                        android:textSize="20sp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/txv_show_module_name"
                         android:layout_width="wrap_content"
-                        android:textSize="18sp"
+                        android:textSize="12sp"
                         android:text="@string/alcohol"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -91,7 +91,7 @@
                     android:layout_gravity="center_horizontal"
                     android:text="@string/notice_idea"
                     android:textColor="#000"
-                    android:textSize="18sp"
+                    android:textSize="12sp"
                     android:typeface="monospace" />
 
                 <view.DrawSwitcher

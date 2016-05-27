@@ -16,13 +16,19 @@ void write_buzzer(int number){
             return;
         }
     }
+    #ifdef FS210
+    usleep(number);
+    ioctl(fd_gpio, BUZZER_ON, 1);
+    usleep(2000-number);
+    ioctl(fd_gpio, BUZZER_OFF, 1);
+    #else
 
     usleep(number);
     ioctl(fd_gpio, BUZZER_ON, &buzzer_type);
     usleep(number);
     ioctl(fd_gpio, BUZZER_OFF, &buzzer_type);
-    LOGI("Sleep: %d", number);
-
+    //LOGI("Sleep: %d", number);
+    #endif
 }
 
 void stop_buzzer(){

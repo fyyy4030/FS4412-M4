@@ -75,7 +75,8 @@ public class DrawServo extends View {
 
 //        canvas.clipRect(dstRect.left + dstRect.width()/2, dstRect.top, dstRect.right, dstRect.bottom);
         canvas.save();
-        canvas.rotate(degree, dstRect.left + dstRect.width() / 2, dstRect.bottom - mPaint.getTextSize());
+        canvas.rotate(degree, dstRect.left + dstRect.width() / 2,
+                dstRect.bottom - mPaint.getTextSize());
         canvas.drawLine(dstRect.left + dstRect.width() / 2 - 110 * screenHeight / 600,
                 dstRect.bottom - mPaint.getTextSize(), dstRect.left + dstRect.width() / 2,
                 dstRect.bottom - mPaint.getTextSize(), mPaint);

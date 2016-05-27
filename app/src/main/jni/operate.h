@@ -20,19 +20,29 @@
 #include <sys/types.h>
 #include <sys/ioctl.h>
 
+#define FS210
 //ADC
+#ifdef FS210
+#define ADC_FILE            "/dev/adcfs210"
+#else
 #define ADC_FILE            "/dev/adc"
-
+#endif
 #define ADC_ALCOHOL         1
 #define ADC_LIGHT           2
 #define ADC_SENSITIVE       3//thermistor
 #define ADC_GAS             4
 
+#ifdef FS210
+#define ALCOHOL_CHANNEL     0
+#define LIGHT_CHANNEL       2
+#define SENSITIVE_CHANNEL   3
+#define GAS_CHANNEL         4
+#else
 #define ALCOHOL_CHANNEL     2
 #define LIGHT_CHANNEL       1
 #define SENSITIVE_CHANNEL   1
 #define GAS_CHANNEL         0
-
+#endif
 #define SET_CHANNEL         _IO('A', 0)
 
 int read_adc(int which);
@@ -43,11 +53,19 @@ int read_adc(int which);
 int read_brake_state();
 
 //Buzzer
-#define BUZZER_FILE         "/dev/gpio"
 #define BUZZER              6
 int fd_gpio;
+
+#ifdef  FS210
+#define BUZZER_FILE         "/dev/beep1"
+#define BUZZER_ON           _IOW('B', 0, int)
+#define BUZZER_OFF          _IOW('B', 1, int)
+#else
+#define BUZZER_FILE         "/dev/gpio"
 #define BUZZER_ON           _IOW('L', 0, int)
-#define BUZZER_OFF           _IOW('L', 1, int)
+#define BUZZER_OFF          _IOW('L', 1, int)
+#endif
+
 void write_buzzer(int HZ);
 void stop_buzzer();
 
@@ -75,12 +93,19 @@ void close_motor();
 //Matrix
 #define ZLG_NAME            "zlg7290"
 #define MATRIX              9
+#define GET_KEY             _IO('Z', 1)
 void read_zlg(int value[2]);
 
 //Relay
 #define RELAY               10
 void write_relay(int);
 void close_relay();
+#ifdef FS210
+#define RELAY_PATH          "/dev/relay"
+#define RELAY_ON            _IOW('R', 0, int)
+#define RELAY_OFF           _IOW('R', 1, int)
+#else
+#endif
 
 //RFID
 #define RFID_FILE           "/dev/rfid"
@@ -94,6 +119,7 @@ int read_rfid();
 #define SERVO_ON            _IOW('V', 0, int)
 #define SERVO_OFF           _IOW('V', 1, int)
 void turn_angle(int operate);
+#define SET_ANGLE           _IO('K', 5)
 void close_servo();
 
 //Steeper

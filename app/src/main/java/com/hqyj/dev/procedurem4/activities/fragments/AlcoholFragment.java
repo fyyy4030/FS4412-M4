@@ -45,8 +45,8 @@ public class AlcoholFragment extends Fragment {
             switch (msg.what){
                 case 1:
                     String value = msg.getData().getString(ALOCHOL);
-                    textView.setTextSize(50);
-                    textView.setText(String.format("%sV", value));
+                    textView.setTextSize(25);
+                    textView.setText(String.format("%s", value));
                     break;
                 default:
                     break;
@@ -98,10 +98,10 @@ public class AlcoholFragment extends Fragment {
 
                 Bundle b = new Bundle();
                 Message msg = new Message();
-                DecimalFormat df = new DecimalFormat("#.##");
 
                 int value = alcohol.operate.read()[0];
-                String result = df.format((double)value*7.2/4096);
+                @SuppressLint("DefaultLocale")
+                String result = String.format("酒精：%.2f ppm", getValue(value));
 
                 b.putString(ALOCHOL, result);
                 msg.what = 1;
@@ -109,11 +109,51 @@ public class AlcoholFragment extends Fragment {
                 handler.sendMessage(msg);
 
                 try {
-                    sleep(2000);
+                    sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         }
+    }
+
+    private double getValue(int datas) {
+        double result;
+        switch (datas / 455) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+                result = (36.00 * datas) / (455 * 4);
+                break;
+            case 4:
+                result = 36 + (34.00 * (datas % 455)) / 455;
+                break;
+            case 5:
+                result = 70 + (30.00 * (datas % 455)) / 455;
+                break;
+            case 6:
+                result = 100 + (45.00 * (datas % 455)) / 455;
+                break;
+            case 7:
+                if (datas % 455 < 273) {
+                    result = 145 + (55.00 * (datas % 455)) / 455;
+                } else {
+                    result = 200 + (100.00 * (datas % 455)) / 455;
+                }
+                break;
+            case 8:
+                if (datas % 455 < 220) {
+                    result = 300 + (200.00 * (datas % 455)) / 455;
+                } else {
+                    result = 501.00;
+                }
+                break;
+            default:
+                result = 501.00;
+                break;
+        }
+
+        return result;
     }
 }

@@ -14,12 +14,9 @@ void trun_angle(int operate){
         }
     }
 
-    int number = operate * 100 /9;
-    usleep(500);
-    ioctl(fd_servo, SERVO_ON, 1);
-    usleep(number + 500);
-    ioctl(fd_servo, SERVO_OFF, 1);
-    usleep(19000 - number);
+    if(operate >=0 && operate <= 180){
+            ioctl(fd_servo, SET_ANGLE, operate);
+        }
 
 }
 

@@ -16,6 +16,7 @@ import java.util.List;
 import view.DrawListViewItem;
 
 /**
+ *
  * Created by jiyangkang on 2016/5/5 0005.
  */
 public class ListViewAdapter extends BaseAdapter {

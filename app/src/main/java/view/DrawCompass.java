@@ -1,12 +1,10 @@
 package view;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
@@ -22,18 +20,17 @@ public class DrawCompass extends View {
     private final int withMatrice;
     private Context mContext;
     private Paint mPaint;
-    private Rect rectDst, orNode;
+    private Rect rectDst, orNode, orPlat;
     private float degree;
 
     private Bitmap bitmapCompassNoods, bitmapCompassPlat;
 
-    private Matrix matrix;
 
     public void setDegree(float degree) {
-        this.degree = -degree;
-        matrix.reset();
-        matrix.postRotate(this.degree, bitmapCompassPlat.getWidth()/2,
-                bitmapCompassPlat.getHeight()/2);
+        this.degree = -90 - degree;
+//        matrix.reset();
+//        matrix.postRotate(this.degree, bitmapCompassPlat.getWidth()/2,
+//                bitmapCompassPlat.getHeight()/2);
 
     }
 
@@ -64,12 +61,12 @@ public class DrawCompass extends View {
         int nodeWith = bitmapCompassNoods.getWidth();
         int nodeHeight = bitmapCompassNoods.getHeight();
         orNode = new Rect(0, 0, nodeWith, nodeHeight);
+        orPlat = new Rect(0, 0, bitmapCompassPlat.getWidth(), bitmapCompassPlat.getHeight());
 
         int w, h;
         w = h = 100 * withMatrice / 1024;
         rectDst = new Rect(0, 0, w, h);
-        matrix = new Matrix();
-        setDegree(270);
+        setDegree(30);
 
     }
 
@@ -77,8 +74,19 @@ public class DrawCompass extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+//        canvas.drawBitmap(bitmapCompassPlat,matrix, mPaint);
+        mPaint.reset();
+        mPaint.setColor(Color.RED);
+        mPaint.setAntiAlias(true);
+        mPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
+        canvas.save();
+        canvas.rotate(degree, rectDst.left + rectDst.width() / 2,
+                rectDst.top + rectDst.height() / 2);
+        canvas.drawBitmap(bitmapCompassPlat, orPlat, rectDst, mPaint);
+        canvas.restore();
+
         canvas.drawBitmap(bitmapCompassNoods, orNode, rectDst, mPaint);
-        canvas.drawBitmap(bitmapCompassPlat,matrix, mPaint);
+
     }
 
     @Override

@@ -11,6 +11,7 @@ import com.hqyj.dev.procedurem4.R;
 import com.hqyj.dev.procedurem4.modules.modules.Relay;
 
 /**
+ *
  * Created by jiyangkang on 2016/5/5 0005.
  */
 public class RelayFragment extends Fragment implements View.OnClickListener{

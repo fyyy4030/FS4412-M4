@@ -17,7 +17,7 @@ void start_steeper(int speed){
     }
 
     delay = (10-speed) * 1000;
-    LOGI("%d", delay);
+    //LOGI("%d", delay);
     ioctl(fd_steeper, STEEPER_ON, 1);
     ioctl(fd_steeper, STEEPER_ON, 2);
     ioctl(fd_steeper, STEEPER_OFF, 3);
@@ -42,5 +42,6 @@ void close_steeper(){
         ioctl(fd_steeper, STEEPER_OFF, 3);
         ioctl(fd_steeper, STEEPER_OFF, 4);
         close(fd_steeper);
+        fd_steeper = -1;
     }
 }

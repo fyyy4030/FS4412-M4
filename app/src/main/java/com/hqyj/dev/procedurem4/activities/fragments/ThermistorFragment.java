@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,8 +41,8 @@ public class ThermistorFragment extends Fragment {
             switch (msg.what){
                 case 1:
                     String value = msg.getData().getString(TAG);
-                    textView.setTextSize(50);
-                    textView.setText(String.format("%sV", value));
+                    textView.setTextSize(25);
+                    textView.setText(String.format("热敏电压：%sV", value));
                     break;
                 default:
                     break;
@@ -97,10 +96,10 @@ public class ThermistorFragment extends Fragment {
                 DecimalFormat df = new DecimalFormat("#.##");
 
                 int value = thermistor.operate.read()[0];
-                String result = df.format((double)value*7.2/4096);
+                String result = df.format((double)value*3.3/4096);
 
                 b.putString(TAG, result);
-                Log.d(TAG, result);
+//                Log.d(TAG, result);
                 msg.what = 1;
                 msg.setData(b);
                 handler.sendMessage(msg);

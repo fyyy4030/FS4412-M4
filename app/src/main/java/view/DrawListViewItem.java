@@ -133,7 +133,7 @@ public class DrawListViewItem extends View{
 
         orBitmapRect = new Rect(0, 0, wBitmap, hBitmap);
 
-        int dstHBitmap = hBitmap * 112 / 600;
+        int dstHBitmap = hBitmap * 75 / 600;
         int dstWBitmap = dstHBitmap * wBitmap / hBitmap;
         dstBitmapRect = new Rect(0, 0, dstWBitmap, dstHBitmap);
 

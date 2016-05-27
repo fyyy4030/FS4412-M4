@@ -8,7 +8,7 @@ int read_adc(int which){
     int fd;
     int value;
 
-    fd = open("/dev/adc", O_RDWR);
+    fd = open(ADC_FILE, O_RDWR);
 
     if (fd < 0){
         LOGI("Open ADC error");
@@ -29,13 +29,13 @@ int read_adc(int which){
             ioctl(fd, SET_CHANNEL, GAS_CHANNEL);
             break;
         default:
-            LOGI("ERROR ADC");
+            //LOGI("ERROR ADC");
             break;
     }
 
     read(fd, &value, sizeof(value));
 
-    LOGI("value : %d\n", value );
+    //LOGI("value : %d\n", value );
 
     close(fd);
 

@@ -6,11 +6,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
 import com.hqyj.dev.procedurem4.R;
 import com.hqyj.dev.procedurem4.modules.modules.Tube;
@@ -94,8 +92,26 @@ public class TubeFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_tube_submit:
-                String valeu = "123 5678";
-                setCMD(valeu);
+                final String value = "12345678";
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        for (int i = 0; i < 8; i++){
+                            StringBuilder stringBuilder = new StringBuilder();
+                            stringBuilder.append(value, i, value.length());
+                            if (i !=0)
+                                stringBuilder.append(value, 0, i);
+                            setCMD(stringBuilder.toString());
+                            try {
+                                Thread.sleep(100);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        setCMD(value);
+                    }
+                }).start();
+
                 break;
             case R.id.btn_tube_system_time:
                 Calendar c = Calendar.getInstance();

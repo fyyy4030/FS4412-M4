@@ -6,12 +6,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 import com.hqyj.dev.procedurem4.R;
 import com.hqyj.dev.procedurem4.modules.modules.Buzzer;
@@ -28,22 +25,8 @@ public class BuzzerFragment extends Fragment implements View.OnClickListener {
 
     private Buzzer buzzer;
 
-    private String TAG = "Buzzer";
-
     private int num = 80;
 
-    @SuppressLint("HandlerLeak")
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case 1:
-
-                    break;
-            }
-        }
-    };
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

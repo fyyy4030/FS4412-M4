@@ -61,6 +61,7 @@ import view.DrawListViewItem;
 import view.DrawSwitcher;
 
 /**
+ *
  * Created by jiyangkang on 2016/5/5 0005.
  */
 public class MainActivity extends FragmentActivity implements AdapterView.OnItemClickListener, ViewPager.OnPageChangeListener {
@@ -282,8 +283,6 @@ public class MainActivity extends FragmentActivity implements AdapterView.OnItem
         msgPosition.what = 3;
         handler.sendMessage(msgPosition);
 
-
-        
 
         if (position < hChild - 1) {
             listView.setSelection(0);

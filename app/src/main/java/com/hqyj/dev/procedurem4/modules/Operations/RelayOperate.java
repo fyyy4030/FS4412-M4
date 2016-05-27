@@ -18,9 +18,7 @@ public class RelayOperate implements Operate {
     @Override
     public int[] read() {
 
-        int[] value = NativieOperate.readModule(ModulesInfo.RELAY);
-
-        return value;
+        return NativieOperate.readModule(ModulesInfo.RELAY);
     }
 
     @Override
