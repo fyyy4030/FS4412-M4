@@ -26,8 +26,8 @@ public class ServoFragment extends Fragment implements RadioGroup.OnCheckedChang
     private Servo servo;
     private String TAG = "SERVO";
 
-    private boolean threadOn = false;
-    private ServoWriteThread servoWriteThread;
+//    private boolean threadOn = false;
+//    private ServoWriteThread servoWriteThread;
     private int degree = 0;
 
     @SuppressLint("HandlerLeak")
@@ -39,6 +39,7 @@ public class ServoFragment extends Fragment implements RadioGroup.OnCheckedChang
                 case 1:
 //                    Log.d(TAG, msg.getData().getInt(TAG) +"角度");
                     degree = msg.getData().getInt(TAG);
+                    servo.operate.write(degree);
                     break;
                 default:
                     break;
@@ -73,9 +74,9 @@ public class ServoFragment extends Fragment implements RadioGroup.OnCheckedChang
         });
         ((RadioGroup) mView.findViewById(R.id.radio_group)).setOnCheckedChangeListener(ServoFragment.this);
 
-        servoWriteThread = new ServoWriteThread();
-        threadOn = true;
-        servoWriteThread.start();
+//        servoWriteThread = new ServoWriteThread();
+//        threadOn = true;
+//        servoWriteThread.start();
         return mView;
     }
 
@@ -121,21 +122,21 @@ public class ServoFragment extends Fragment implements RadioGroup.OnCheckedChang
     }
 
 
-    private class ServoWriteThread extends Thread{
-        @Override
-        public void run() {
-            super.run();
-            while(threadOn){
-                servo.operate.write(degree);
-            }
-        }
-    }
+//    private class ServoWriteThread extends Thread{
+//        @Override
+//        public void run() {
+//            super.run();
+//            while(threadOn){
+//                servo.operate.write(degree);
+//            }
+//        }
+//    }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        threadOn = false;
+//        threadOn = false;
         servo.operate.write(-1);
-        servoWriteThread.interrupt();
+//        servoWriteThread.interrupt();
     }
 }
