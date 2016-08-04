@@ -110,6 +110,7 @@ jintArray JNICALL Java_com_hqyj_dev_procedurem4_modules_Operations_NativieOperat
             read_zlg(zlg_key);
             buf[0] = zlg_key[0];
             buf[1] = zlg_key[1];
+            //LOGI("value of matrix = %d" , zlg_key[0]);
             (*env)->SetIntArrayRegion(env, value, 0, 2, buf);
         break;
       case COMPASS:

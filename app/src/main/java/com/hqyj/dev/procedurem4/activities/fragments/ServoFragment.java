@@ -28,7 +28,7 @@ public class ServoFragment extends Fragment implements RadioGroup.OnCheckedChang
     private String TAG = "SERVO";
 
     private boolean threadOn = false;
-    private ServoWriteThread servoWriteThread;
+//    private ServoWriteThread servoWriteThread;
     private int degree = 0;
 
     @SuppressLint("HandlerLeak")
@@ -40,6 +40,7 @@ public class ServoFragment extends Fragment implements RadioGroup.OnCheckedChang
                 case 1:
                     Log.d(TAG, msg.getData().getInt(TAG) +"角度");
                     degree = msg.getData().getInt(TAG);
+                    servo.operate.write(degree);
                     break;
                 default:
                     break;
@@ -74,9 +75,9 @@ public class ServoFragment extends Fragment implements RadioGroup.OnCheckedChang
         });
         ((RadioGroup) mView.findViewById(R.id.radio_group)).setOnCheckedChangeListener(ServoFragment.this);
 
-        servoWriteThread = new ServoWriteThread();
+//        servoWriteThread = new ServoWriteThread();
         threadOn = true;
-        servoWriteThread.start();
+//        servoWriteThread.start();
         return mView;
     }
 
@@ -118,25 +119,30 @@ public class ServoFragment extends Fragment implements RadioGroup.OnCheckedChang
                 break;
         }
         drawServo.setDegree(degree);
+        servo.operate.write(degree);
         drawServo.invalidate();
     }
 
 
-    private class ServoWriteThread extends Thread{
-        @Override
-        public void run() {
-            super.run();
-            while(threadOn){
-                servo.operate.write(degree);
-            }
-        }
-    }
+//    private int oldDegree;
+//    private class ServoWriteThread extends Thread{
+//        @Override
+//        public void run() {
+//            super.run();
+//            while(threadOn && degree != oldDegree){
+//                oldDegree = degree;
+//                servo.operate.write(degree);
+//
+//
+//            }
+//        }
+//    }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         threadOn = false;
         servo.operate.write(-1);
-        servoWriteThread.interrupt();
+//        servoWriteThread.interrupt();
     }
 }

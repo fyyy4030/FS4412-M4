@@ -89,31 +89,69 @@ public class GasFragment extends Fragment {
         gasReadThread.interrupt();
     }
 
-    private class GasReadThread extends Thread{
+    private class GasReadThread extends Thread {
         @Override
         public void run() {
             super.run();
             while (threadOn) {
                 Bundle b = new Bundle();
                 Message msg = new Message();
-                DecimalFormat df = new DecimalFormat("#.##");
 
                 int value = gas.operate.read()[0];
-                String result = df.format((double) value * 3.3 / 4096);
+                @SuppressLint("DefaultLocale")
+                String result = String.format("可燃气 ：%.2f ppm", getValue(value));
 
                 b.putString(TAG, result);
-                Log.d(TAG, result);
+//                Log.d(TAG, result);
                 msg.what = 1;
                 msg.setData(b);
                 handler.sendMessage(msg);
 
                 try {
-                    sleep(2000);
+                    sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         }
+    }
+
+    private double getValue(int datas) {
+        double result;
+        switch (datas / 455) {
+            case 0:
+            case 1:
+            case 2:
+                result = (139.00 * datas) / (455 * 3);
+                break;
+            case 3:
+                result = 139 + (278.00 * (datas % 455)) / 455;
+                break;
+            case 4:
+                result = 417 + (333.00 * (datas % 455)) / 455;
+                break;
+            case 5:
+                result = 750 + (800.00 * (datas % 455)) / 455;
+                break;
+            case 6:
+                result = 1350 + (1150.00 * (datas % 455)) / 455;
+                break;
+            case 7:
+                result = 2500 + (1600.00 * (datas % 455)) / 455;
+                break;
+            case 8:
+                if (datas % 455 < 400) {
+                    result = 4100 + (3400.00 * (datas % 455)) / 455;
+                } else {
+                    result = 7500 + (1000.00 * (datas % 455)) / 455;
+                }
+                break;
+            default:
+                result = 8501.00;
+                break;
+        }
+
+        return result;
     }
 
 }

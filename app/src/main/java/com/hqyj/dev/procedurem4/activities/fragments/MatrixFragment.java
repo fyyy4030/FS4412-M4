@@ -98,24 +98,44 @@ public class MatrixFragment extends Fragment {
                 Message msg = new Message();
                 int[] value = matrix.operate.read();
 
-                if (value != null && value[0]!=0 && value[1]!=0) {
+//                if (value != null && value[0]!=0 && value[1]!=0) {
+//                    String valueKey = getKey(value[0]);
+//                    if (!valueKey.equalsIgnoreCase( "null")) {
+//                        if (string == null) {
+//                            string = getKey(value[0]);
+//                        } else {
+//                            string = string + getKey(value[0]);
+//                        }
+//                        msg.what = 1;
+//                        b.putString(TAG, string);
+//                        Log.d(TAG, string);
+//                        msg.setData(b);
+//                        handler.sendMessage(msg);
+//                    }
+//
+//                    if (string!=null &&string.length() >= 15)
+//                        string = null;
+//                }
+
+                if (value != null && value[0] != 0 && value[1] != 0){
+                    Log.d(TAG, "run: "+"read matrix" + value[0]);
                     String valueKey = getKey(value[0]);
-                    if (!valueKey.equalsIgnoreCase( "null")) {
-                        if (string == null) {
-                            string = getKey(value[0]);
-                        } else {
-                            string = string + getKey(value[0]);
+                    if (!valueKey.equalsIgnoreCase("null")){
+                        if (string == null){
+                            string = valueKey;
+                        }else {
+                            string = string + valueKey;
                         }
                         msg.what = 1;
                         b.putString(TAG, string);
-                        Log.d(TAG, string);
+                        Log.d(TAG, "matrix == === " + string);
                         msg.setData(b);
                         handler.sendMessage(msg);
                     }
-
-                    if (string!=null &&string.length() >= 15)
-                        string = null;
                 }
+
+                if (string!=null && string.length() >= 15)
+                    string = null;
             }
         }
     }
@@ -124,36 +144,52 @@ public class MatrixFragment extends Fragment {
     private String getKey(int key){
         String value;
         switch (key){
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-            case 10:
-                value = String.format("%d", key-1);
+            case 28:
+                value = String.format("%d", 1);
+                break;
+            case 27:
+                value = String.format("%d", 2);
+                break;
+            case 26:
+                value = String.format("%d", 3);
+                break;
+            case 20:
+                value = String.format("%d", 4);
+                break;
+            case 19:
+                value = String.format("%d", 5);
+                break;
+            case 18:
+                value = String.format("%d", 6);
+                break;
+            case 12:
+                value = String.format("%d", 7);
                 break;
             case 11:
+                value = String.format("%d", 8);
+                break;
+            case 10:
+                value = String.format("%d", 9);
+                break;
+            case 3:
                 value = String.format("%d", 0);
                 break;
-            case 30:
+            case 25:
                 value = "A";
                 break;
-            case 48:
+            case 17:
                 value = "B";
                 break;
-            case 46:
+            case 9:
                 value = "C";
                 break;
-            case 32:
+            case 1:
                 value = "D";
                 break;
-            case 522:
+            case 4:
                 value = "*";
                 break;
-            case 523:
+            case 2:
                 value = "#";
                 break;
             default:

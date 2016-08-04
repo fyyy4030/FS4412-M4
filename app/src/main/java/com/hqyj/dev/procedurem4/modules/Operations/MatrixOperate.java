@@ -18,9 +18,7 @@ public class MatrixOperate implements Operate {
     @Override
     public int[] read() {
 
-        int[] value = NativieOperate.readModule(ModulesInfo.MATRIX);
-
-        return value;
+        return NativieOperate.readModule(ModulesInfo.MATRIX);
     }
 
     @Override

@@ -87,6 +87,7 @@ void close_motor();
 //Matrix
 #define ZLG_NAME            "zlg7290"
 #define MATRIX              9
+#define GET_KEY             _IO('Z', 1)
 void read_zlg(int value[2]);
 
 //Relay
@@ -112,6 +113,7 @@ int read_rfid();
 #define SERVO_ON            _IOW('V', 0, int)
 #define SERVO_OFF           _IOW('V', 1, int)
 void turn_angle(int operate);
+#define SET_ANGLE           _IO('K', 5)
 void close_servo();
 
 //Steeper

@@ -113,12 +113,13 @@ public class BrakeFragment extends Fragment {
                     handler.sendMessage(msg);
                     oldState = value;
                     if (value == 0)
-                        count ++;
-                    try {
-                        sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                        count++;
+
+                }
+                try {
+                    sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }

@@ -3,37 +3,32 @@
 //
 
 #include "operate.h"
-#include "linux/input.h"
+//#include "linux/input.h"
 
-char file_path[128];
-int find_zlg();
-struct input_event ev;
-int* result;
+//char file_path[128];
+//int find_zlg();
+//struct input_event ev;
+//int* result;
 
 
 void read_zlg(int value[2]){
 
-    find_zlg();
-    int fd = open(file_path, O_RDONLY);
+    //find_zlg();
+    //int fd = open(file_path, O_RDONLY);
+    int key = 0;
+    int fd = open(TUBE_FILE, O_RDWR);
     if(fd < 0){
         value = NULL;
     } else{
-        read(fd, &ev, sizeof(ev));
-        switch(ev.type){
-            case EV_KEY:
-                value[0] = ev.code;
-                value[1] = ev.value;
-                LOGI("value[0]: %d", value[0]);
-                LOGI("value[1]: %d", value[1]);
-            break;
-            default:
-                value = NULL;
-            break;
-        }
+        ioctl(fd, GET_KEY, &key);
+        value[0] = key;
+        value[1] = key;
+        LOGI("value[0]: %d", value[0]);
+        LOGI("value[1]: %d", value[1]);
     }
     close(fd);
 }
-
+/*
 int find_zlg(){
     int fd;
     int i = 0;
@@ -69,3 +64,4 @@ int find_zlg(){
     return 0;
 }
 
+*/
