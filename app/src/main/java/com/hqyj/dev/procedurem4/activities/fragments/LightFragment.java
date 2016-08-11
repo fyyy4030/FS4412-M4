@@ -43,7 +43,7 @@ public class LightFragment extends Fragment {
                 case 1:
                     String value = msg.getData().getString(TAG);
                     txvLight.setTextSize(50);
-                    txvLight.setText(String.format("%sV", value));
+                    txvLight.setText(String.format("%s", value));
                     break;
                 default:
                     break;
@@ -87,6 +87,7 @@ public class LightFragment extends Fragment {
     }
 
     private class LightReadThread extends Thread {
+        @SuppressLint("DefaultLocale")
         @Override
         public void run() {
             super.run();
@@ -96,8 +97,15 @@ public class LightFragment extends Fragment {
                 Message msg = new Message();
 
                 int value = light.operate.read()[0];
-                @SuppressLint("DefaultLocale")
-                String result = String.format("光强 %.2f Lux", getlux(value));
+
+                String result;
+                if (getlux(value) == 0.0){
+                    result = String.format("光强 > %.2f Lux", 100.0);
+                }else if (getlux(value) == -1){
+                    result = String.format("光强 %.2f Lux", 0.0);
+                }else {
+                    result = String.format("光强 %.2f Lux", getlux(value));
+                }
 
                 b.putString(TAG, result);
                 msg.what = 1;

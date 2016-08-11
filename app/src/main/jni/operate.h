@@ -79,9 +79,11 @@ struct hmc5883_data{
 #define DC_MOTOR            8
 #define DC_DYNAMO_ON        _IOW('D', 0, int)
 #define DC_DYNAMO_OFF       _IOW('D', 1, int)
+//#define DC_DYNAMO_RATE      _IOR('D', 2, int)
 void stop_motor();
 void start_right_motor();
 void start_left_motor();
+//void read_rate(int *rate);
 void close_motor();
 
 //Matrix

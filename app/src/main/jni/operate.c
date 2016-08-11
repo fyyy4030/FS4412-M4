@@ -137,7 +137,14 @@ jintArray JNICALL Java_com_hqyj_dev_procedurem4_modules_Operations_NativieOperat
             buf[0] = rfid;
             (*env)->SetIntArrayRegion(env, value, 0, 1, buf);
         break;
-
+      //case DC_MOTOR:
+        //    memset(buf, 0, sizeof(buf));
+         //   value = (*env)->NewIntArray(env, 1);
+          //  int* rate;
+           // read_rate(rate);
+           // buf[0] = *rate;
+            //(*env)->SetIntArrayRegion(env, value, 0, 1, buf);
+        //break;
       default:
             memset(buf, 0, sizeof(buf));
             value = (*env)->NewIntArray(env, 1);

@@ -44,7 +44,7 @@ public class GasFragment extends Fragment {
                 case 1:
                     String value = msg.getData().getString(TAG);
                     textView.setTextSize(50);
-                    textView.setText(String.format("%sV", value));
+                    textView.setText(String.format("%s", value));
                     break;
                 default:
                     break;

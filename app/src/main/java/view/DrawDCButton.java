@@ -1,5 +1,6 @@
 package view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -21,22 +22,31 @@ public class DrawDCButton extends View {
     private Bitmap bitmapShow, bitmapDefaut, bitmapLeft, bitmapRight, bitmapStop, bitmapGray;
     private int state;
     private Paint mPaint;
+    private Paint textPaint;
     private Rect rectOr, rectDst;
+//    private Rect rectText;
     private Context mContext;
     private final int withMatrice;
-
+//    private String text;
+//    private String rate = "停止";
+//    private final String stop = "停止";
+//    private final String left = "正转";
+//    private final String right = "反转";
 
     public void setState(int state) {
         this.state = state;
         switch (state){
             case 0:
                 bitmapShow = bitmapStop;
+//                rate = stop;
                 break;
             case 1:
                 bitmapShow = bitmapRight;
+//                rate = left;
                 break;
             case 2:
                 bitmapShow = bitmapLeft;
+//                rate = right;
                 break;
             case 3:
                 bitmapShow = bitmapGray;
@@ -54,6 +64,7 @@ public class DrawDCButton extends View {
         this(context, attrs, 0);
     }
 
+    @SuppressLint("DefaultLocale")
     public DrawDCButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
@@ -80,12 +91,30 @@ public class DrawDCButton extends View {
         int dH = dW * oH/oW;
         rectDst = new Rect(0,0,dW, dH);
 
+//        textPaint = new Paint();
+//        textPaint.setColor(Color.BLACK);
+//        textPaint.setAntiAlias(true);
+//        textPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
+//        textPaint.setTextSize(22);
+//        rectText = new Rect(rectDst.left, rectDst.bottom + 10,
+//                rectDst.right, (int) (2 * textPaint.getTextSize() + 1) + rectDst.bottom);
+
+
+//        text = String.format("当前状态：%s，当前转速：%d r/s", rate, 0);
     }
+
+//    @SuppressLint("DefaultLocale")
+//    public void setText(int speed) {
+////        text = String.format("当前状态：%s，当前转速：%d r/s", rate, speed);
+//        postInvalidate();
+//    }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawBitmap(bitmapShow, rectOr, rectDst, mPaint);
+//        canvas.drawText(text, rectText.left + 5,
+//                rectText.height() / 4 + rectText.top, textPaint);
     }
 
     @Override
