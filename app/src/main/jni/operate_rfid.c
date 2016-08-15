@@ -31,5 +31,6 @@ int read_rfid(){
         number_return = (number_return << 8) | card_data[i];
     }
 
+    close(fd);
     return number_return;
 }

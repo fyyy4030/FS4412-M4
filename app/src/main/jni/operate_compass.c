@@ -26,6 +26,7 @@ int read_angle(){
     LOGI("angle = %lf", angle);
 
     value = (int) angle;
+    close(fd);
 
     return value;
 }
