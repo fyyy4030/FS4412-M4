@@ -23,6 +23,7 @@ public class ModulesInfo {
     public static final int STEEPER = 13;
     public static final int THERMISTOR = 3;
     public static final int TUBE = 14;
+    public static final int TEMP = 15;
 
     public static Application application = null;
 

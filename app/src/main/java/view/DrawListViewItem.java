@@ -50,8 +50,8 @@ public class DrawListViewItem extends View{
         mapList.put(mContext.getResources().getString(R.string.buzzer),
                 new int[]{R.drawable.buzzer_gray, R.drawable.buzzer_light});
 
-        mapList.put(mContext.getResources().getString(R.string.compass),
-                new int[]{R.drawable.compass_gray, R.drawable.compass_light});
+//        mapList.put(mContext.getResources().getString(R.string.compass),
+//                new int[]{R.drawable.compass_gray, R.drawable.compass_light});
 
         mapList.put(mContext.getResources().getString(R.string.dc_motor),
                 new int[]{R.drawable.dc_motor_gray, R.drawable.dc_motor_light});
@@ -77,12 +77,13 @@ public class DrawListViewItem extends View{
         mapList.put(mContext.getResources().getString(R.string.steeper),
                 new int[]{R.drawable.steeper_gray, R.drawable.steeper_light});
 
-        mapList.put(mContext.getResources().getString(R.string.thermistor),
-                new int[]{R.drawable.thermistor_gray, R.drawable.thermistor_light});
+        mapList.put(mContext.getResources().getString(R.string.flame),
+                new int[]{R.drawable.flame_gray, R.drawable.flame_light});
 
         mapList.put(mContext.getResources().getString(R.string.tube),
                 new int[]{R.drawable.tube_gray, R.drawable.tube_light});
 
+        mapList.put(mContext.getResources().getString(R.string.temp),new int[]{R.drawable.temp_gray,R.drawable.temp_light});
         mapList.put("it is for init", new int[]{R.drawable.no_name, R.drawable.no_name});
     }
 

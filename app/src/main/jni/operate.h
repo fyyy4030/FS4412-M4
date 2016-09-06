@@ -19,6 +19,8 @@
 #include <sys/ioctl.h>
 #include <sys/types.h>
 #include <sys/ioctl.h>
+#include <linux/types.h>
+#include <errno.h>
 
 //#define FS210
 //ADC
@@ -131,3 +133,10 @@ void close_steeper();
 #define TUBE                14
 #define SET_VAL             _IO('Z', 0)
 void set_tube(int operate);
+
+//temp
+#define TEMP                15
+#define TEMP_FILE           "/dev/i2c-1"
+int read_temp();
+
+

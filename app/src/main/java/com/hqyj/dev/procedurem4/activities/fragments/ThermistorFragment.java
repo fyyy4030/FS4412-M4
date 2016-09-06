@@ -28,7 +28,7 @@ public class ThermistorFragment extends Fragment {
 
     private ThermistorReadThread thermistorReadThread;
     private boolean threadOn = false;
-    private String TAG = "THERMISTOR";
+    private String TAG = "FLAME";
 
     static {
         System.loadLibrary("operate");

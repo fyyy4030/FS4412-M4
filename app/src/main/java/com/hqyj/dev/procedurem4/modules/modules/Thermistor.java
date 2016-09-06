@@ -16,7 +16,7 @@ public class Thermistor extends Module{
 
     private Thermistor(){
 
-        setName(ModulesInfo.application.getResources().getString(R.string.thermistor));
+        setName(ModulesInfo.application.getResources().getString(R.string.flame));
         operate = new ThermistorOperate();
         int switcher = R.drawable.thermistor_bo;
         setSwitcher(switcher);
@@ -32,7 +32,4 @@ public class Thermistor extends Module{
         }
         return thermistor;
     }
-
-
-
 }

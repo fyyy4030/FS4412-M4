@@ -113,14 +113,14 @@ jintArray JNICALL Java_com_hqyj_dev_procedurem4_modules_Operations_NativieOperat
             //LOGI("value of matrix = %d" , zlg_key[0]);
             (*env)->SetIntArrayRegion(env, value, 0, 2, buf);
         break;
-      case COMPASS:
-            memset(buf, 0, sizeof(buf));
-            value = (*env)->NewIntArray(env, 1);
-            int compass;
-            compass = read_angle();
-            buf[0] = compass;
-            (*env)->SetIntArrayRegion(env, value, 0, 1, buf);
-        break;
+     // case COMPASS:
+         //   memset(buf, 0, sizeof(buf));
+        //    value = (*env)->NewIntArray(env, 1);
+        //    int compass;
+        //    compass = read_angle();
+        //    buf[0] = compass;
+          //  (*env)->SetIntArrayRegion(env, value, 0, 1, buf);
+       // break;
       case BRAKE:
             memset(buf, 0, sizeof(buf));
             value = (*env)->NewIntArray(env, 1);
@@ -135,6 +135,15 @@ jintArray JNICALL Java_com_hqyj_dev_procedurem4_modules_Operations_NativieOperat
             int rfid;
             rfid = read_rfid(rfid);
             buf[0] = rfid;
+            (*env)->SetIntArrayRegion(env, value, 0, 1, buf);
+        break;
+      case TEMP:
+            memset(buf, 0, sizeof(buf));
+            value = (*env)->NewIntArray(env, 1);
+            int temp;
+            temp = read_temp();
+            LOGI("jni temp = %d\n",temp);
+            buf[0] = temp;
             (*env)->SetIntArrayRegion(env, value, 0, 1, buf);
         break;
       //case DC_MOTOR:

@@ -18,4 +18,6 @@
     <string name="notice">Pay Attention Please</string>
     <string name="notice_idea">Please adjust the dial switch as shown in the figure below:</string>
     <string name="get_input">waitting for input 。。。</string>
+    <string name="flame">Flame</string>
+    <string name="temp">Temperature</string>
 </resources>

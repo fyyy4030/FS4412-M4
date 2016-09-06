@@ -34,6 +34,7 @@ import com.hqyj.dev.procedurem4.activities.fragments.RFIDFragment;
 import com.hqyj.dev.procedurem4.activities.fragments.RelayFragment;
 import com.hqyj.dev.procedurem4.activities.fragments.ServoFragment;
 import com.hqyj.dev.procedurem4.activities.fragments.SteeperFragment;
+import com.hqyj.dev.procedurem4.activities.fragments.TempFragment;
 import com.hqyj.dev.procedurem4.activities.fragments.ThermistorFragment;
 import com.hqyj.dev.procedurem4.activities.fragments.TubeFragment;
 import com.hqyj.dev.procedurem4.modules.Module;
@@ -49,6 +50,7 @@ import com.hqyj.dev.procedurem4.modules.modules.Relay;
 import com.hqyj.dev.procedurem4.modules.modules.Rfid;
 import com.hqyj.dev.procedurem4.modules.modules.Servo;
 import com.hqyj.dev.procedurem4.modules.modules.Steeper;
+import com.hqyj.dev.procedurem4.modules.modules.Temp;
 import com.hqyj.dev.procedurem4.modules.modules.Thermistor;
 import com.hqyj.dev.procedurem4.modules.modules.Tube;
 import com.hqyj.dev.procedurem4.staticBuild.ModulesInfo;
@@ -192,7 +194,7 @@ public class MainActivity extends FragmentActivity implements AdapterView.OnItem
         AlcoholFragment alcoholFragment = new AlcoholFragment();
         BrakeFragment brakeFragment = new BrakeFragment();
         BuzzerFragment buzzerFragment = new BuzzerFragment();
-        CompassFragment compassFragment = new CompassFragment();
+//        CompassFragment compassFragment = new CompassFragment();
         DCMotorFragment dcMotorFragment = new DCMotorFragment();
         GasFragment gasFragment = new GasFragment();
         LightFragment lightFragment = new LightFragment();
@@ -203,11 +205,12 @@ public class MainActivity extends FragmentActivity implements AdapterView.OnItem
         SteeperFragment steeperFragment = new SteeperFragment();
         ThermistorFragment thermistorFragment = new ThermistorFragment();
         TubeFragment tubeFragment = new TubeFragment();
+        TempFragment tempFragment = new TempFragment();
 
         fragmentList.add(alcoholFragment);
         fragmentList.add(brakeFragment);
         fragmentList.add(buzzerFragment);
-        fragmentList.add(compassFragment);
+//        fragmentList.add(compassFragment);
         fragmentList.add(dcMotorFragment);
         fragmentList.add(gasFragment);
         fragmentList.add(lightFragment);
@@ -218,6 +221,7 @@ public class MainActivity extends FragmentActivity implements AdapterView.OnItem
         fragmentList.add(steeperFragment);
         fragmentList.add(thermistorFragment);
         fragmentList.add(tubeFragment);
+        fragmentList.add(tempFragment);
 
         modulesNameList.add(fragmentList.indexOf(alcoholFragment),
                 Alcohol.getAlcohol());
@@ -225,8 +229,8 @@ public class MainActivity extends FragmentActivity implements AdapterView.OnItem
                 Brake.getBrake());
         modulesNameList.add(fragmentList.indexOf(buzzerFragment),
                 Buzzer.getBuzzer());
-        modulesNameList.add(fragmentList.indexOf(compassFragment),
-                Compass.getCompass());
+//        modulesNameList.add(fragmentList.indexOf(compassFragment),
+//                Compass.getCompass());
         modulesNameList.add(fragmentList.indexOf(dcMotorFragment),
                 DCMotor.getDcMotor());
         modulesNameList.add(fragmentList.indexOf(gasFragment),
@@ -247,6 +251,7 @@ public class MainActivity extends FragmentActivity implements AdapterView.OnItem
                 Thermistor.getThermistor());
         modulesNameList.add(fragmentList.indexOf(tubeFragment),
                 Tube.getTube());
+        modulesNameList.add(fragmentList.indexOf(tempFragment), Temp.getTemp());
     }
 
 
